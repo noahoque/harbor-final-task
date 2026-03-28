@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bike Range Visualizer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+
+    <aside>
+        <div>
+            <h1>Pelago E-Bike Range Visualizer</h1>
+        </div>
+
+        <hr />
+
+        <div>
+            <div>Starting Point</div>
+            <input type="text" id="startInput" placeholder="e.g. Helsinki, Espoo…" value="Helsinki" />
+        </div>
+
+        <div>
+            <div>Destination (Optional)</div>
+            <input type="text" id="destInput" placeholder="e.g. Kirkkonummi, Porvoo" />
+        </div>
+
+        <div>
+            <div>Bike Model</div>
+            <select id="bikeSelect">
+            <option value="90">Pelago Lovisa — 90 km</option>
+            <option value="70">Pelago Olari — 70 km</option>
+            <option value="110">Pelago Wellamo — 110 km</option>
+            </select>
+        </div>
+
+        <div>
+            <div>
+                <span>Temperature</span>
+                <span id="tempVal">+15°C</span>
+            </div>
+            <input type="range" id="tempSlider" min="-30" max="30" value="15" />
+            <div class="tick-row"><span>−30°</span><span>0°</span><span>+30°</span></div>
+        </div>
+
+        <div>
+            <div>
+                <span>Rider Weight</span>
+                <span id="massVal">75 kg</span>
+            </div>
+            <input type="range" id="massSlider" min="50" max="130" value="75" step="5" />
+            <div class="tick-row"><span>50 kg</span><span>90 kg</span><span>130 kg</span></div>
+        </div>
+
+        <hr />
+
+        <div>
+            <div id="rangeNum">90</div>
+        </div>
+
+    </aside>
+
+    <div class="map-wrap">
+        <div id="map"></div>
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+            <div class="loading-label">Calculating range…</div>
+        </div>
+    </div>
+        
+</body>
+</html>
