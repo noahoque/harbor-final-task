@@ -6,7 +6,7 @@ let destMarker = null;
 let startMarker = null;
 let timer = null;
 
-const map = L.map("map", { zoomControl: false, scrollWheelZoom: false, dragging: false })
+const map = L.map("map", { zoomControl: true, scrollWheelZoom: true, dragging: true })
   .setView(startCoords, 8);
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
