@@ -6,7 +6,7 @@ let destMarker = null;
 let startMarker = null;
 let timer = null;
 
-const map = L.map("map", { zoomControl: true, scrollWheelZoom: true, dragging: true })
+const map = L.map("map", { zoomControl: false, scrollWheelZoom: false, dragging: false })
   .setView(startCoords, 8);
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
@@ -33,11 +33,12 @@ function calcRange(base, temp, kg) {
   else if (temp >= -20) range = base * 0.50;
   else range = base * 0.40;
 
-  let weightFactor = 1.0 - ((kg - 75) / 10) * 0.04;
-  if (weightFactor < 0.80) weightFactor = 0.80;
-  if (weightFactor > 1.10) weightFactor = 1.10;
+  range = range - (kg - 75) * 0.5;
 
-  return Math.round(range * weightFactor);
+  if (range > base) range = base;
+
+  return Math.round(range)
+
 }
 
 async function fetchIsoline(rangeKm) {
